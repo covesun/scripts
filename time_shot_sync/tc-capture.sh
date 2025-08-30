@@ -11,11 +11,11 @@ VIDEO_TITLE="MyMovie"
 LOG="/tmp/fcp_ocr_uploader.log"
 SAVE_DEBUG_IMAGES=true
 
-# 4K 左上タイムコード帯（％）
-CROP_W_PCT=21
-CROP_H_PCT=6
-CROP_X_PCT=4
-CROP_Y_PCT=6
+# 4K 左上タイムコード帯（ピクセル）
+CROP_W_PX=1014
+CROP_H_PX=154
+CROP_X_PX=0
+CROP_Y_PX=0
 THRESHOLD_PCT=60   # 50〜70で調整可
 
 timestamp(){ date "+%Y-%m-%d %H:%M:%S"; }
@@ -37,19 +37,12 @@ DBG_DIR="/tmp/fcp_ocr_samples"
 ocr_tc () {
   local in="$1"
   local tmpdir; tmpdir="$(mktemp -d)"
-  local WH W H cw ch cx cy bin raw tc
+  local cw ch cx cy bin raw tc
 
-  if ! WH=$(magick identify -format "%w %h" "$in" 2>>"$LOG"); then
-    echo "$(timestamp) identify failed for $in" >> "$LOG"
-    [ "$SAVE_DEBUG_IMAGES" = true ] && cp "$in" "$DBG_DIR/$(date +%s)_orig.png"
-    rm -rf "$tmpdir"; return 1
-  fi
-
-  W="${WH%% *}"; H="${WH##* }"
-  cw=$(( W * CROP_W_PCT / 100 ))
-  ch=$(( H * CROP_H_PCT / 100 ))
-  cx=$(( W * CROP_X_PCT / 100 ))
-  cy=$(( H * CROP_Y_PCT / 100 ))
+  cw="$CROP_W_PX"
+  ch="$CROP_H_PX"
+  cx="$CROP_X_PX"
+  cy="$CROP_Y_PX"
 
   bin="$tmpdir/bin.png"
 
