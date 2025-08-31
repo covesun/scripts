@@ -63,10 +63,16 @@ function onChange(e) {
   }
 }
 
-// 初回だけ実行してから、トリガーを作成
-function setupTriggerEveryMinute() {
+// 初回だけ実行してトリガーを作成
+function setupTriggers() {
   ScriptApp.newTrigger('scanAndInsertNewImages')
-    .timeBased().everyMinutes(1).create();
+    .timeBased()
+    .everyMinutes(1)
+    .create();
+  ScriptApp.newTrigger('onChange')
+    .forSpreadsheet(SpreadsheetApp.getActive())
+    .onChange()
+    .create();
 }
 
 // TODO
