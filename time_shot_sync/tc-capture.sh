@@ -12,7 +12,7 @@ LOG="/tmp/fcp_ocr_uploader.log"
 SAVE_DEBUG_IMAGES=true
 
 # 4K 左上タイムコード帯（ピクセル）
-CROP_W_PX=1014
+CROP_W_PX=1020
 CROP_H_PX=154
 CROP_X_PX=0
 CROP_Y_PX=0
@@ -115,14 +115,20 @@ for FILE in "$@"; do
     echo "$(timestamp) OCR FAIL (check $DBG_DIR)" >> "$LOG"
   fi
 
-  # 2) 送信用に縮小コピーを作成
-  tmp_small="$(mktemp "/tmp/fcp_small.XXXXXX").${ext}"
-  /usr/bin/sips --resampleWidth 800 "$FILE" --out "$tmp_small" >> "$LOG" 2>&1
-  mime="image/png"
+  # 2) 元ファイルをそのまま縮小（上書き）
+  before_bytes=$(stat -f%z "$FILE" 2>/dev/null || echo 0)
+  before_wh=$(magick identify -format "%wx%h" "$FILE" 2>/dev/null || echo "")
   if [ "$ext" = "jpg" ] || [ "$ext" = "jpeg" ]; then
-    /usr/bin/sips --setProperty formatOptions 60 "$tmp_small" >> "$LOG" 2>&1
+    /usr/bin/sips --resampleWidth 400 "$FILE" >> "$LOG" 2>&1
+    /usr/bin/sips --setProperty formatOptions 60 "$FILE" >> "$LOG" 2>&1
     mime="image/jpeg"
+  else
+    /usr/bin/sips --resampleWidth 400 "$FILE" >> "$LOG" 2>&1
+    mime="image/png"
   fi
+  after_bytes=$(stat -f%z "$FILE" 2>/dev/null || echo 0)
+  after_wh=$(magick identify -format "%wx%h" "$FILE" 2>/dev/null || echo "")
+  echo "$(timestamp) resized in-place: $before_wh($before_bytes B) -> $after_wh($after_bytes B)" >> "$LOG"
 
   # 3) GASへ送信（tcが空でも送る）
   #send_to_gas "$tmp_small" "$mime" "$tc"
