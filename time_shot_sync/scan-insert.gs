@@ -57,7 +57,8 @@ function scanAndInsertNewImages() {
 }
 
 // 行削除時に対応するファイルをGoogle Driveから削除
-function onChange(e) {
+// installable trigger (not simple onChange)
+function handleSheetChange(e) {
   const lock = LockService.getScriptLock();
   lock.waitLock(30000);
   try {
@@ -88,7 +89,7 @@ function setupTriggers() {
     .timeBased()
     .everyMinutes(1)
     .create();
-  ScriptApp.newTrigger('onChange')
+  ScriptApp.newTrigger('handleSheetChange')
     .forSpreadsheet(SpreadsheetApp.getActive())
     .onChange()
     .create();
