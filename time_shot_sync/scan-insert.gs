@@ -31,17 +31,48 @@ function scanAndInsertNewImages() {
     ]);
   }
 
-  // 追加（古い順で下に並べたい場合は逆順にしてから追加）
+  // 追加行はファイル名で昇順に並べ、行の高さを120pxに設定
   if (newRows.length) {
-    newRows.sort((a,b)=> a[3]-b[3]); // 受信時刻で昇順
-    sh.getRange(sh.getLastRow() + 1, 1, newRows.length, newRows[0].length).setValues(newRows);
+    newRows.sort((a, b) => a[2].localeCompare(b[2]));
+    const startRow = sh.getLastRow() + 1;
+    sh.getRange(startRow, 1, newRows.length, newRows[0].length).setValues(newRows);
+    sh.setRowHeights(startRow, newRows.length, 120);
+    // 既存行を含めてファイル名で並び替え
+    sh.getRange(2, 1, sh.getLastRow() - 1, sh.getLastColumn())
+      .sort({ column: 3, ascending: true });
   }
 }
 
-// 初回だけ実行してから、トリガーを作成
-function setupTriggerEveryMinute() {
+// 行削除時に対応するファイルをGoogle Driveから削除
+function onChange(e) {
+  if (e.changeType !== 'REMOVE_ROW') return;
+
+  const sh = e.source.getActiveSheet();
+  const last = sh.getLastRow();
+  const ids = last >= 2
+    ? sh.getRange(2, 2, last - 1, 1).getValues().flat().filter(Boolean)
+    : [];
+  const existing = new Set(ids);
+  const folder = DriveApp.getFolderById(FOLDER_ID);
+  const files = folder.getFiles();
+  while (files.hasNext()) {
+    const f = files.next();
+    if (!existing.has(f.getId())) {
+      f.setTrashed(true);
+    }
+  }
+}
+
+// 初回だけ実行してトリガーを作成
+function setupTriggers() {
   ScriptApp.newTrigger('scanAndInsertNewImages')
-    .timeBased().everyMinutes(1).create();
+    .timeBased()
+    .everyMinutes(1)
+    .create();
+  ScriptApp.newTrigger('onChange')
+    .forSpreadsheet(SpreadsheetApp.getActive())
+    .onChange()
+    .create();
 }
 
 // TODO
