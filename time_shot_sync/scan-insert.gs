@@ -1,9 +1,9 @@
 const FOLDER_ID  = '1EF4eFuW6MkOfTbQ4jCn0TG9BqjVSopFk';
 
 const COL_IMAGE = 1;
-const COL_ID    = 2;
+const COL_ID    = 4;
 const COL_NAME  = 3;
-const COL_TIME  = 4;
+const COL_TIME  = 5;
 const HEADER_ROW = 1;
 const ROW_HEIGHT_PX = 120;
 
@@ -13,11 +13,17 @@ function scanAndInsertNewImages() {
   try {
     const sh = SpreadsheetApp.getActiveSheet(); // アクティブシート取得
 
-    // 既に処理済みのIDセットを作る（B列）
+    // 既に処理済みのIDセットを作り、既存行のファイル名一覧を取得（B列/C列）
     const last = sh.getLastRow();
     const known = new Set();
+    const names = last >= HEADER_ROW + 1
+      ? sh.getRange(HEADER_ROW + 1, COL_NAME, last - HEADER_ROW, 1).getValues().flat()
+      : [];
     if (last >= HEADER_ROW + 1) { // ヘッダ行を除外
-      const ids = sh.getRange(HEADER_ROW + 1, COL_ID, last - HEADER_ROW, 1).getValues().flat().filter(Boolean);
+      const ids = sh.getRange(HEADER_ROW + 1, COL_ID, last - HEADER_ROW, 1)
+        .getValues()
+        .flat()
+        .filter(Boolean);
       ids.forEach(id => known.add(id));
     }
 
@@ -41,15 +47,26 @@ function scanAndInsertNewImages() {
       newRows.push(row);
     }
 
-    // 追加行はファイル名で昇順に並べ、行の高さを120pxに設定
+    // 追加行はファイル名で昇順に並べ、既存行を保持したまま適切な位置へ挿入
     if (newRows.length) {
       newRows.sort((a, b) => a[COL_NAME - 1].localeCompare(b[COL_NAME - 1]));
-      const startRow = sh.getLastRow() + 1;
-      sh.getRange(startRow, COL_IMAGE, newRows.length, newRows[0].length).setValues(newRows);
-      sh.setRowHeights(startRow, newRows.length, ROW_HEIGHT_PX);
-      // 既存行を含めてファイル名で並び替え
-      sh.getRange(HEADER_ROW + 1, COL_IMAGE, sh.getLastRow() - HEADER_ROW, sh.getLastColumn())
-        .sort({ column: COL_NAME, ascending: true });
+      newRows.forEach(row => {
+        const name = row[COL_NAME - 1];
+        let i = 0;
+        while (i < names.length && names[i].localeCompare(name) <= 0) i++;
+        let rowIndex;
+        if (i < names.length) {
+          rowIndex = HEADER_ROW + i + 1;
+          sh.insertRowBefore(rowIndex);
+        } else {
+          const lastRow = sh.getLastRow();
+          rowIndex = lastRow + 1;
+          sh.insertRowAfter(lastRow);
+        }
+        sh.getRange(rowIndex, COL_IMAGE, 1, row.length).setValues([row]);
+        sh.setRowHeight(rowIndex, ROW_HEIGHT_PX);
+        names.splice(i, 0, name);
+      });
     }
   } finally {
     lock.releaseLock();
