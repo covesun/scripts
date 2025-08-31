@@ -1,9 +1,9 @@
 const FOLDER_ID  = '1EF4eFuW6MkOfTbQ4jCn0TG9BqjVSopFk';
 
 const COL_IMAGE = 1;
-const COL_ID    = 2;
+const COL_ID    = 4;
 const COL_NAME  = 3;
-const COL_TIME  = 4;
+const COL_TIME  = 5;
 const HEADER_ROW = 1;
 const ROW_HEIGHT_PX = 120;
 
