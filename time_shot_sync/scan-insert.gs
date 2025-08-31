@@ -90,6 +90,7 @@ function setupTriggers() {
     .everyMinutes(1)
     .create();
   ScriptApp.newTrigger('handleSheetChange')
+
     .forSpreadsheet(SpreadsheetApp.getActive())
     .onChange()
     .create();
