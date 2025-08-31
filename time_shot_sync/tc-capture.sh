@@ -9,7 +9,7 @@ GAS_WEBHOOK_URL="https://script.google.com/macros/s/xxxxxxxxxxxxxxxx/exec"
 SHARED_SECRET="書き換えて"
 VIDEO_TITLE="MyMovie"
 LOG="/tmp/fcp_ocr_uploader.log"
-SAVE_DEBUG_IMAGES=true
+SAVE_DEBUG_IMAGES=false
 
 # 4K 左上タイムコード帯（ピクセル）
 CROP_W_PX=1020
