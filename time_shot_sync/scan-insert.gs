@@ -33,12 +33,12 @@ function scanAndInsertNewImages() {
       if (known.has(id)) continue;
 
       const url = `https://drive.google.com/uc?export=view&id=${id}`;
-      newRows.push([
-        `=IMAGE("${url}")`,  // A: セル内画像
-        id,                  // B: ファイルID
-        f.getName(),         // C: ファイル名
-        new Date(f.getDateCreated()) // D: 受信時刻
-      ]);
+      const row = [];
+      row[COL_IMAGE - 1] = `=IMAGE("${url}")`;
+      row[COL_ID - 1] = id;
+      row[COL_NAME - 1] = f.getName();
+      row[COL_TIME - 1] = new Date(f.getDateCreated());
+      newRows.push(row);
     }
 
     // 追加行はファイル名で昇順に並べ、行の高さを120pxに設定
