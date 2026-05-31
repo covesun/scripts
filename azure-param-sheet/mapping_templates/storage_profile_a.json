@@ -1,0 +1,120 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccountName": {
+      "type": "string",
+      "defaultValue": "stmappingprfa"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "japaneast"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2023-05-01",
+      "name": "[parameters('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_GRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "minimumTlsVersion": "TLS1_0",
+        "allowBlobPublicAccess": true,
+        "allowSharedKeyAccess": false,
+        "allowCrossTenantReplication": true,
+        "supportsHttpsTrafficOnly": false,
+        "defaultToOAuthAuthentication": true,
+        "accessTier": "Cool",
+        "largeFileSharesState": "Enabled",
+        "dnsEndpointType": "Standard",
+        "publicNetworkAccess": "Enabled",
+        "requireInfrastructureEncryption": false,
+        "networkAcls": {
+          "defaultAction": "Allow",
+          "bypass": "Logging",
+          "ipRules": [],
+          "virtualNetworkRules": []
+        },
+        "encryption": {
+          "keySource": "Microsoft.Storage",
+          "requireInfrastructureEncryption": false,
+          "services": {
+            "blob": { "enabled": true, "keyType": "Account" },
+            "file": { "enabled": true, "keyType": "Account" }
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2023-05-01",
+      "name": "[concat(parameters('storageAccountName'), '/default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+      ],
+      "properties": {
+        "deleteRetentionPolicy": {
+          "enabled": true,
+          "days": 13,
+          "allowPermanentDelete": true
+        },
+        "containerDeleteRetentionPolicy": {
+          "enabled": true,
+          "days": 17
+        },
+        "isVersioningEnabled": true,
+        "changeFeed": {
+          "enabled": true,
+          "retentionInDays": 11
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2023-05-01",
+      "name": "[concat(parameters('storageAccountName'), '/default/mappingtest')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccountName'), 'default')]"
+      ],
+      "properties": {
+        "publicAccess": "Container",
+        "denyEncryptionScopeOverride": true,
+        "defaultEncryptionScope": "$account-encryption-key",
+        "immutableStorageWithVersioning": {
+          "enabled": false
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
+      "apiVersion": "2023-05-01",
+      "name": "[concat(parameters('storageAccountName'), '/default/mappingshare')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+      ],
+      "properties": {
+        "accessTier": "TransactionOptimized",
+        "shareQuota": 31,
+        "enabledProtocols": "SMB"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "apiVersion": "2023-05-01",
+      "name": "[concat(parameters('storageAccountName'), '/default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+      ],
+      "properties": {
+        "shareDeleteRetentionPolicy": {
+          "enabled": true,
+          "days": 19
+        }
+      }
+    }
+  ]
+}

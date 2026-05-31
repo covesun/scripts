@@ -1,0 +1,77 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": { "location": { "type": "string", "defaultValue": "japaneast" } },
+  "resources": [
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2023-09-01",
+      "name": "vnet-agw-only",
+      "location": "[parameters('location')]",
+      "properties": {
+        "addressSpace": { "addressPrefixes": ["10.20.0.0/16"] },
+        "subnets": [{ "name": "snet-agw", "properties": { "addressPrefix": "10.20.1.0/24" } }]
+      }
+    },
+    {
+      "type": "Microsoft.Network/publicIPAddresses",
+      "apiVersion": "2023-09-01",
+      "name": "pip-agw-only",
+      "location": "[parameters('location')]",
+      "sku": { "name": "Standard" },
+      "properties": { "publicIPAllocationMethod": "Static" }
+    },
+    {
+      "type": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+      "apiVersion": "2023-09-01",
+      "name": "waf-policy-only",
+      "location": "[parameters('location')]",
+      "properties": {
+        "policySettings": {
+          "state": "Enabled", "mode": "Prevention",
+          "requestBodyCheck": true, "maxRequestBodySizeInKb": 128, "fileUploadLimitInMb": 100
+        },
+        "managedRules": { "managedRuleSets": [{ "ruleSetType": "OWASP", "ruleSetVersion": "3.2" }], "exclusions": [] }
+      }
+    },
+    {
+      "type": "Microsoft.Network/applicationGateways",
+      "apiVersion": "2023-09-01",
+      "name": "agw-only",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-agw-only')]",
+        "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-agw-only')]",
+        "[resourceId('Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies', 'waf-policy-only')]"
+      ],
+      "properties": {
+        "sku": { "name": "WAF_v2", "tier": "WAF_v2", "capacity": 2 },
+        "gatewayIPConfigurations": [{ "name": "gw-ipcfg", "properties": {
+          "subnet": { "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'vnet-agw-only', 'snet-agw')]" }
+        }}],
+        "frontendIPConfigurations": [{ "name": "fip-public", "properties": {
+          "publicIPAddress": { "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-agw-only')]" }
+        }}],
+        "frontendPorts": [{ "name": "fp-8080", "properties": { "port": 8080 } }],
+        "backendAddressPools": [{ "name": "bp-mapping", "properties": { "backendAddresses": [] } }],
+        "backendHttpSettingsCollection": [{ "name": "bhs-8080", "properties": {
+          "port": 8080, "protocol": "Http", "requestTimeout": 30,
+          "cookieBasedAffinity": "Disabled",
+          "pickHostNameFromBackendAddress": false
+        }}],
+        "httpListeners": [{ "name": "lsn-http", "properties": {
+          "frontendIPConfiguration": { "id": "[resourceId('Microsoft.Network/applicationGateways/frontendIPConfigurations', 'agw-only', 'fip-public')]" },
+          "frontendPort": { "id": "[resourceId('Microsoft.Network/applicationGateways/frontendPorts', 'agw-only', 'fp-8080')]" },
+          "protocol": "Http", "requireServerNameIndication": false
+        }}],
+        "requestRoutingRules": [{ "name": "rrr-basic", "properties": {
+          "ruleType": "Basic", "priority": 100,
+          "httpListener": { "id": "[resourceId('Microsoft.Network/applicationGateways/httpListeners', 'agw-only', 'lsn-http')]" },
+          "backendAddressPool": { "id": "[resourceId('Microsoft.Network/applicationGateways/backendAddressPools', 'agw-only', 'bp-mapping')]" },
+          "backendHttpSettings": { "id": "[resourceId('Microsoft.Network/applicationGateways/backendHttpSettingsCollection', 'agw-only', 'bhs-8080')]" }
+        }}],
+        "firewallPolicy": { "id": "[resourceId('Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies', 'waf-policy-only')]" }
+      }
+    }
+  ]
+}

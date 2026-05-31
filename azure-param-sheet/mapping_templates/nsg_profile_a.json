@@ -1,0 +1,65 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "nsgName": {
+      "type": "string",
+      "defaultValue": "nsg-mapping"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "japaneast"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "apiVersion": "2023-09-01",
+      "name": "[parameters('nsgName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "Allow-HTTP-Inbound",
+            "properties": {
+              "priority": 1300,
+              "direction": "Inbound",
+              "access": "Allow",
+              "protocol": "Tcp",
+              "sourceAddressPrefix": "203.0.113.0/24",
+              "sourcePortRange": "*",
+              "destinationAddressPrefix": "10.13.1.0/24",
+              "destinationPortRange": "8080"
+            }
+          },
+          {
+            "name": "Deny-All-Inbound",
+            "properties": {
+              "priority": 1700,
+              "direction": "Inbound",
+              "access": "Deny",
+              "protocol": "*",
+              "sourceAddressPrefix": "*",
+              "sourcePortRange": "*",
+              "destinationAddressPrefix": "*",
+              "destinationPortRange": "*"
+            }
+          },
+          {
+            "name": "Allow-DNS-Outbound",
+            "properties": {
+              "priority": 2300,
+              "direction": "Outbound",
+              "access": "Allow",
+              "protocol": "Udp",
+              "sourceAddressPrefix": "10.13.0.0/16",
+              "sourcePortRange": "*",
+              "destinationAddressPrefix": "203.0.113.0/24",
+              "destinationPortRange": "5353"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

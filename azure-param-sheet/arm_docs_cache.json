@@ -1,0 +1,2804 @@
+{
+  "storage": {
+    "id": {
+      "name": "ID",
+      "portal_name": "リソース ID",
+      "description": "保存時のサービス側暗号化で使用する ID。",
+      "type_info": "暗号化アイデンティティ",
+      "portal_names": {
+        "設定 / プロパティ / 概要": "リソース ID"
+      },
+      "confirmed": true
+    },
+    "allowprotectedappendwrites": {
+      "name": "allowProtectedAppendWrites",
+      "portal_name": "",
+      "description": "このプロパティは、無効でロック解除された時間ベースのアイテム保持ポリシーに対してのみ変更できます。 有効にすると、不変性の保護とコンプライアンスを維持しながら、新しいブロックを追加 BLOB に書き込むことができます。 新しいブロックのみを追加でき、既存のブロックは変更または削除できません。",
+      "type_info": "ブール (bool)"
+    },
+    "azurestoragesid": {
+      "name": "azureStorageSid の",
+      "portal_name": "",
+      "description": "Azure Storage のセキュリティ識別子 (SID) を指定します。 directoryServiceOptions が AD (AD DS 認証) に設定されている場合、このプロパティは必須です。 それ以外の場合は、省略できます。",
+      "type_info": "文字列"
+    },
+    "netbiosdomainname": {
+      "name": "netBiosDomainName (英語)",
+      "portal_name": "英語",
+      "description": "NetBIOS ドメイン名を指定します。 directoryServiceOptions が AD (AD DS 認証) に設定されている場合、このプロパティは必須です。 それ以外の場合は、省略できます。",
+      "type_info": "文字列"
+    },
+    "samaccountname": {
+      "name": "samAccountName さん",
+      "portal_name": "",
+      "description": "Azure Storage の Active Directory SAMAccountName を指定します。 directoryServiceOptions が AD (AD DS 認証) に設定されている場合、このプロパティは省略可能です。 指定する場合は、accountType も指定する必要があります。 directoryServiceOptions AADDS (Entra DS 認証) または AADKERB (Entra 認証) の場合、このプロパティは省略できます。",
+      "type_info": "文字列"
+    },
+    "directoryserviceoptions": {
+      "name": "directoryServiceOptions (ディレクトリサービスオプション)",
+      "portal_name": "ディレクトリサービスオプション",
+      "description": "使用されるディレクトリ サービスを示します。 この列挙型は将来拡張される可能性があることに注意してください。",
+      "type_info": "「AADDS」 / 「アードカーブ」 / 「広告」 / 'None' (必須)"
+    },
+    "smboauth": {
+      "name": "smbOAuthの設定",
+      "portal_name": "",
+      "description": "OAuth over SMB を使用したマネージド ID アクセスに必要です。",
+      "type_info": "SmbOAuth設定"
+    },
+    "usesubdomainname": {
+      "name": "customDomain.useSubDomainName",
+      "portal_name": "間接 CNAME 検証を使用する",
+      "description": "間接 CName 検証が有効かどうかを示します。 既定値は false です。 これは、更新時にのみ設定する必要があります。",
+      "type_info": "ブール (bool)",
+      "portal_names": {
+        "セキュリティとネットワーク / ネットワーク / カスタム ドメイン": "間接 CNAME 検証を使用する"
+      }
+    },
+    "publishipv6": {
+      "name": "publishIpv6エンドポイント",
+      "portal_name": "",
+      "description": "IPv6 ストレージエンドポイントを公開するかどうかを示すブールフラグ。",
+      "type_info": "ブール (bool)"
+    },
+    "keyvault": {
+      "name": "keyvaultプロパティ",
+      "portal_name": "",
+      "description": "キー コンテナーによって提供されるプロパティ。",
+      "type_info": "KeyVaultProperties の"
+    },
+    "requireinfrastructure": {
+      "name": "requireInfrastructure暗号化",
+      "portal_name": "",
+      "description": "サービスが保存データのプラットフォーム マネージド キーを使用して暗号化のセカンダリ レイヤーを適用するかどうかを示すブール値。",
+      "type_info": "ブール (bool)"
+    },
+    "federatedidentityclientid": {
+      "name": "federatedIdentityClientId (フェデレーション アイデンティティ クライアント ID)",
+      "portal_name": "フェデレーション アイデンティティ クライアント ID",
+      "description": "ストレージ アカウントでのクロステナントカスタマー マネージド キー サーバー側暗号化のユーザー割り当て ID と組み合わせて使用するマルチテナント アプリケーションの ClientId。",
+      "type_info": "文字列"
+    },
+    "blob": {
+      "name": "BLOB",
+      "portal_name": "",
+      "description": "Blobサービス用の共有キーアクセス設定。",
+      "type_info": "ServiceSharedKeyAccessProperties"
+    },
+    "isblob": {
+      "name": "isBlob有効",
+      "portal_name": "",
+      "description": "ストレージ アカウントに対して BLOB Geo 優先度レプリケーションが有効になっているかどうかを示します。",
+      "type_info": "ブール (bool)"
+    },
+    "userassignedidentities": {
+      "name": "userAssignedIdentities (ユーザー割り当て済みアイデンティティ)",
+      "portal_name": "ユーザー割り当て済みアイデンティティ",
+      "description": "このストレージ アカウントで使用されるユーザー割り当て ID のセットを記述するキー値ペアの一覧を取得または設定します。 キーは、ID の ARM リソース識別子です。 ここで許可されるユーザー割り当て ID は 1 つだけです。",
+      "type_info": "IdentityUserAssignedIdentities の"
+    },
+    "ip": {
+      "name": "ipルール",
+      "portal_name": "",
+      "description": "IP ACL 規則を設定します",
+      "type_info": "IPRule[]"
+    },
+    "ipv6": {
+      "name": "ipv6ルール",
+      "portal_name": "",
+      "description": "IPv6 ACL ルールを設定します。",
+      "type_info": "IPRule[]"
+    },
+    "virtualnetworkrules": {
+      "name": "networkAcls.virtualNetworkRules",
+      "portal_name": "仮想ネットワーク",
+      "description": "仮想ネットワーク規則を設定します。",
+      "type_info": "VirtualNetworkRule[]",
+      "portal_names": {
+        "セキュリティとネットワーク / ネットワーク / リソース アクセスの設定": "Virtual Networks"
+      }
+    },
+    "microsoft": {
+      "name": "Microsoftエンドポイントを発行する",
+      "portal_name": "",
+      "description": "Microsoft ルーティング ストレージ エンドポイントを発行するかどうかを示すブール型フラグ",
+      "type_info": "ブール (bool)"
+    },
+    "expiration": {
+      "name": "expirationアクション",
+      "portal_name": "",
+      "description": "SAS 有効期限アクションは、sasPolicy.sasExpirationPeriod に違反したときに実行されるアクションを定義します。 \"ログ\" アクションは監査目的で使用でき、\"ブロック\" アクションを使用して、SAS ポリシーの有効期限に準拠していない SAS トークンの使用をブロックおよび拒否できます。",
+      "type_info": "「ブロック」 / 'Log' (必須)"
+    },
+    "sasexpirationperiod": {
+      "name": "sasExpirationPeriod",
+      "portal_name": "",
+      "description": "SAS の有効期限 (DD.HH:MM:SS)。",
+      "type_info": "string (必須)"
+    },
+    "issmboauth": {
+      "name": "isSmbOAuth対応",
+      "portal_name": "",
+      "description": "マネージド ID が OAuth を使用して SMB 共有にアクセスできるかどうかを指定します。 このプロパティの既定の解釈は false です。",
+      "type_info": "ブール (bool)"
+    },
+    "accesstier": {
+      "name": "accessTier",
+      "portal_name": "アクセス層",
+      "description": "種類が BlobStorage であるストレージ アカウントに必要です。 アクセス層は課金に使用されます。 \"Premium\" アクセス層は Premium ブロック BLOB ストレージ アカウントの種類の既定値であり、Premium ブロック BLOB ストレージ アカウントの種類に対しては変更できません。",
+      "type_info": "「寒い」 / 'クール' / 「ホット」 / 「プレミアム」 / 「賢い」",
+      "value_map": {
+        "ホット": "Hot",
+        "クール": "Cool",
+        "コールド": "Cold",
+        "トランザクションが最適化されました": "TransactionOptimized"
+      },
+      "portal_names": {
+        "概要 / プロパティ / Blob service": "既定のアクセス層",
+        "設定 / 構成": "BLOB のアクセスレベル (既定)",
+        "データ ストレージ / クラシック ファイル共有": "アクセス層",
+        "データ ストレージ / クラシック ファイル共有 / 概要": "アクセス層"
+      },
+      "confirmed": true
+    },
+    "allowcrosstenantreplication": {
+      "name": "allowCrossTenantReplication",
+      "portal_name": "クロステナント レプリケーションを許可する",
+      "description": "AAD テナント 間のオブジェクト レプリケーションを許可または禁止します。 オブジェクト レプリケーション ポリシーに異なる AAD テナントのストレージ アカウントが含まれる場合にのみ、新規または既存のアカウントに対してこのプロパティを true に設定します。 既定では、新しいアカウントがベスト セキュリティ プラクティスに従う場合、既定の解釈は false です。",
+      "type_info": "ブール (bool)",
+      "portal_names": {
+        "概要 / プロパティ / Blob service": "クロステナント レプリケーションを許可する"
+      },
+      "confirmed": true,
+      "value_map": {
+        "無効": "false"
+      }
+    },
+    "allowedcopyscope": {
+      "name": "allowedCopyScope (コピースコープ)",
+      "portal_name": "コピースコープ",
+      "description": "AAD テナント内またはプライベート リンクを使用して、同じ VNet へのストレージ アカウントとの間のコピーを制限します。",
+      "type_info": "「AAD」 / 'All' / 「プライベートリンク」",
+      "portal_names": {
+        "設定 / 構成": "コピー操作の許可されるスコープ (プレビュー)"
+      }
+    },
+    "allowsharedkeyaccess": {
+      "name": "allowSharedKeyAccess",
+      "portal_name": "ストレージ アカウント キーへのアクセスを許可する",
+      "description": "ストレージ アカウントが、共有キーを介してアカウント アクセス キーを使用して承認される要求を許可するかどうかを示します。 false の場合、Shared Access Signature を含むすべての要求が Azure Active Directory (Azure AD) で承認されている必要があります。 既定値は null で、true と同じです。",
+      "type_info": "ブール (bool)",
+      "value_map": {
+        "有効": "true",
+        "無効": "false"
+      },
+      "portal_names": {
+        "概要 / プロパティ / セキュリティ": "ストレージ アカウント キーへのアクセス",
+        "設定 / 構成": "ストレージ アカウント キーへのアクセスを許可する"
+      },
+      "confirmed": true
+    },
+    "allowsharedkeyaccessforservices": {
+      "name": "allowSharedKeyAccessForServices",
+      "portal_name": "",
+      "description": "サービスレベルで共有キーアクセスプロパティを示します",
+      "type_info": "StorageAccountSharedKeyAccessProperties"
+    },
+    "azurefilesidentitybased": {
+      "name": "azureFilesIdentityBased認証",
+      "portal_name": "",
+      "description": "Azure Files の ID ベースの認証設定を提供します。",
+      "type_info": "AzureFilesIdentityBased認証"
+    },
+    "datacollaborationpolicyproperties": {
+      "name": "dataCollaborationPolicyProperties(データコラボレーションポリシープロパティ)",
+      "portal_name": "データコラボレーションポリシープロパティ",
+      "description": "ストレージアカウントのデータコラボレーションポリシー。",
+      "type_info": "ストレージ、データ、コラボレーション、ポリシープロパティ"
+    },
+    "defaulttooauth": {
+      "name": "defaultToOAuth認証",
+      "portal_name": "",
+      "description": "既定の認証が OAuth かどうかを示すブール値フラグ。 このプロパティの既定の解釈は false です。",
+      "type_info": "ブール (bool)"
+    },
+    "dns": {
+      "name": "dnsエンドポイントタイプ",
+      "portal_name": "",
+      "description": "エンドポイントの種類を指定できます。 これを AzureDNSZone に設定すると、1 つのサブスクリプションに多数のアカウントが作成されます。これにより、Azure DNS ゾーンにアカウントが作成され、エンドポイント URL に英数字の DNS ゾーン識別子が設定されます。",
+      "type_info": "'AzureDnsZone' / 「スタンダード」"
+    },
+    "dualstackendpoint": {
+      "name": "dualStackEndpointプリファレンス",
+      "portal_name": "",
+      "description": "ユーザーが選択したインターネットプロトコルに関する情報を保持します。",
+      "type_info": "DualStackEndpointプリファレンス"
+    },
+    "enableextendedgroups": {
+      "name": "enableExtendedGroups",
+      "portal_name": "",
+      "description": "true に設定されている場合は、ローカル ユーザー機能を使用してグループの拡張サポートを有効にします",
+      "type_info": "ブール (bool)"
+    },
+    "geopriorityreplicationstatus": {
+      "name": "geoPriorityReplicationStatus (地理優先度レプリケーションステータス)",
+      "portal_name": "地理優先度レプリケーションステータス",
+      "description": "アカウントに対して Geo Priority Replication が有効になっているかどうかを示すステータス。",
+      "type_info": "GeoPriorityReplicationStatus (地理優先度レプリケーションステータス)"
+    },
+    "ishnsenabled": {
+      "name": "isHnsEnabled (英語)",
+      "portal_name": "階層型名前空間",
+      "description": "アカウント HierarchyNamespace が true に設定されている場合に有効になります。",
+      "type_info": "ブール (bool)",
+      "portal_names": {
+        "概要 / プロパティ / Blob service": "階層型名前空間"
+      }
+    },
+    "islocaluserenabled": {
+      "name": "isLocalUserEnabled (英語)",
+      "portal_name": "英語",
+      "description": "ローカル ユーザー機能を有効にします (true に設定されている場合)",
+      "type_info": "ブール (bool)"
+    },
+    "isnfsv3": {
+      "name": "isNfsV3対応",
+      "portal_name": "",
+      "description": "TRUE に設定されている場合、NFS 3.0 プロトコルのサポートが有効になります。",
+      "type_info": "ブール (bool)"
+    },
+    "issftpenabled": {
+      "name": "isSftpEnabled(英語)",
+      "portal_name": "英語",
+      "description": "セキュリティで保護されたファイル転送プロトコルを有効にします (true に設定されている場合)",
+      "type_info": "ブール (bool)"
+    },
+    "largefilesharesstate": {
+      "name": "largeFileSharesState",
+      "portal_name": "大きなファイル共有",
+      "description": "[有効] に設定されている場合は、大きなファイル共有を許可します。 一度有効にした後は無効にできません。",
+      "type_info": "「無効」 / 「有効」",
+      "portal_names": {
+        "設定 / 構成": "大きなファイル共有"
+      },
+      "confirmed": true,
+      "value_map": {
+        "無効": "Disabled"
+      }
+    },
+    "minimumtlsversion": {
+      "name": "minimumTlsVersion",
+      "portal_name": "TLS の最小バージョン",
+      "description": "ストレージへの要求で許可される最小 TLS バージョンを設定します。 このプロパティの既定の解釈は TLS 1.0 です。 最低TLSバージョン1.3はサポートされていません。",
+      "type_info": "「TLS1_0」 / 「TLS1_1」 / 「TLS1_2」 / 「TLS1_3」",
+      "value_map": {
+        "バージョン 1.0": "TLS1_0",
+        "バージョン 1.1": "TLS1_1",
+        "バージョン 1.2": "TLS1_2"
+      },
+      "portal_names": {
+        "概要 / プロパティ / セキュリティ": "TLS の最小バージョン",
+        "設定 / 構成": "TLS の最小バージョン"
+      },
+      "confirmed": true
+    },
+    "publicnetworkaccess": {
+      "name": "publicNetworkAccess",
+      "portal_name": "パブリック ネットワーク アクセス",
+      "description": "ストレージ アカウントへのパブリック ネットワーク アクセスを評価するために、ネットワーク セキュリティ境界構成を許可、禁止、または許可します。 値は省略可能ですが、渡される場合は'Enabled'、'Disabled'、または 'SecuredByPerimeter' である必要があります。",
+      "type_info": "「無効」 / 「有効」 / 「SecuredByPerimeter」",
+      "value_map": {
+        "有効": "Enabled",
+        "無効": "Disabled",
+        "境界で保護": "SecuredByPerimeter",
+        "有効 (選択したネットワーク)": "Enabled"
+      },
+      "portal_names": {
+        "概要 / プロパティ / ネットワーク": "パブリック ネットワーク アクセス",
+        "セキュリティとネットワーク / ネットワーク / パブリック ネットワーク アクセス": "パブリック ネットワーク アクセス",
+        "セキュリティとネットワーク / ネットワーク / パブリック アクセス": "パブリック ネットワーク アクセス"
+      },
+      "confirmed": true
+    },
+    "supportshttpstrafficonly": {
+      "name": "supportsHttpsTrafficOnly",
+      "portal_name": "安全な転送が必須",
+      "description": "true に設定されている場合にのみ、ストレージ サービスへの https トラフィックを許可します。 API バージョン 2019-04-01 以降、既定値は true です。",
+      "type_info": "ブール (bool)",
+      "value_map": {
+        "有効": "true",
+        "無効": "false"
+      },
+      "portal_names": {
+        "概要 / プロパティ / セキュリティ": "REST API 操作の安全な転送を必須にする",
+        "設定 / 構成": "安全な転送が必須"
+      },
+      "confirmed": true
+    },
+    "allowcrosstenantdatasharing": {
+      "name": "allowCrossTenantDataSharing(交差借籍者データ共有)",
+      "portal_name": "交差借籍者データ共有",
+      "description": "ストレージアカウントでエントラ間テナント間データ共有が許可されているかどうかを示します。",
+      "type_info": "ブール (bool)"
+    },
+    "allowstorageconnectors": {
+      "name": "allowStorageConnectors",
+      "portal_name": "",
+      "description": "ストレージアカウント上でストレージコネクタを作成または管理できるかどうかを示します。",
+      "type_info": "ブール (bool)"
+    },
+    "allowstoragedatashares": {
+      "name": "allowStorageDataShares",
+      "portal_name": "",
+      "description": "ストレージアカウント上でデータ共有を作成または管理できるかどうかを示します。",
+      "type_info": "ブール (bool)"
+    },
+    "location": {
+      "name": "location",
+      "portal_name": "場所",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "概要 / プロパティ": "場所"
+      },
+      "confirmed": true
+    },
+    "kind": {
+      "name": "kind",
+      "portal_name": "アカウントの種類",
+      "description": "",
+      "type_info": "",
+      "value_map": {
+        "StorageV2 (汎用 v2)": "StorageV2",
+        "BlobStorage": "BlobStorage",
+        "BlockBlobStorage": "BlockBlobStorage",
+        "FileStorage": "FileStorage"
+      },
+      "portal_names": {
+        "設定 / 構成": "アカウントの種類",
+        "概要 / プロパティ": "アカウントの種類"
+      },
+      "confirmed": true
+    },
+    "allowblobpublicaccess": {
+      "name": "allowBlobPublicAccess",
+      "portal_name": "BLOB 匿名アクセスを許可する",
+      "description": "",
+      "type_info": "",
+      "value_map": {
+        "有効": "true",
+        "無効": "false"
+      },
+      "portal_names": {
+        "概要 / プロパティ / Blob service": "BLOB 匿名アクセス",
+        "設定 / 構成": "BLOB 匿名アクセスを許可する"
+      },
+      "confirmed": true
+    },
+    "deleteretentionpolicy": {
+      "name": "deleteRetentionPolicy",
+      "portal_name": "BLOB の論理的な削除",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "概要 / プロパティ / Blob service": "BLOB の論理的な削除"
+      }
+    },
+    "containerdeleteretentionpolicy": {
+      "name": "containerDeleteRetentionPolicy",
+      "portal_name": "コンテナーの論理的な削除",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "概要 / プロパティ / Blob service": "コンテナーの論理的な削除"
+      }
+    },
+    "versioning": {
+      "name": "versioning",
+      "portal_name": "BLOB のバージョン管理を有効にする",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "概要 / プロパティ / Blob service": "バージョン管理",
+        "データ管理 / データ保護 / 追跡": "BLOB のバージョン管理を有効にする"
+      }
+    },
+    "changefeed": {
+      "name": "changeFeed",
+      "portal_name": "BLOB の変更フィードを有効にする",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "概要 / プロパティ / Blob service": "変更フィード",
+        "データ管理 / データ保護 / 追跡": "BLOB の変更フィードを有効にする"
+      }
+    },
+    "isnfsv3enabled": {
+      "name": "isnfsv3enabled",
+      "portal_name": "NFS v3",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "概要 / プロパティ / Blob service": "NFS v1"
+      }
+    },
+    "requireinfrastructureencryption": {
+      "name": "requireInfrastructureEncryption",
+      "portal_name": "インフラストラクチャ暗号化",
+      "description": "",
+      "type_info": "",
+      "value_map": {
+        "有効": "true",
+        "無効": "false"
+      },
+      "portal_names": {
+        "概要 / プロパティ / セキュリティ": "インフラストラクチャ暗号化",
+        "セキュリティとネットワーク / 暗号化 / 暗号化": "インフラストラクチャ暗号化",
+        "セキュリティとネットワーク / 暗号化": "インフラストラクチャ暗号化"
+      },
+      "confirmed": true
+    },
+    "dnsendpointtype": {
+      "name": "dnsEndpointType",
+      "portal_name": "エンドポイントの種類",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "概要 / プロパティ / ネットワーク": "エンドポイントの種類"
+      },
+      "confirmed": true
+    },
+    "routingchoice": {
+      "name": "routingPreference.routingChoice",
+      "portal_name": "ルーティングの優先順位",
+      "description": "",
+      "type_info": "",
+      "value_map": {
+        "Microsoft ネットワーク ルーティング": "MicrosoftRouting",
+        "インターネット ルーティング": "InternetRouting"
+      },
+      "portal_names": {
+        "概要 / プロパティ / ネットワーク": "ネットワーク ルーティング",
+        "セキュリティとネットワーク / ネットワーク / ネットワーク ルーティング": "ルーティングの優先順位"
+      }
+    },
+    "azurefilesidentitybasedauthentication": {
+      "name": "azurefilesidentitybasedauthentication",
+      "portal_name": "ID ベースのアクセス",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "概要 / プロパティ / File サービス": "ID ベースのアクセス"
+      }
+    },
+    "defaultsharepermission": {
+      "name": "defaultsharepermission",
+      "portal_name": "既定の共有レベルのアクセス許可",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "概要 / プロパティ / File サービス": "既定の共有レベルのアクセス許可"
+      }
+    },
+    "tier": {
+      "name": "sku.tier",
+      "portal_name": "パフォーマンス",
+      "description": "",
+      "type_info": "",
+      "value_map": {
+        "Standard": "Standard",
+        "Premium": "Premium"
+      },
+      "portal_names": {
+        "設定 / 構成": "パフォーマンス"
+      },
+      "confirmed": true
+    },
+    "restorepolicy": {
+      "name": "restorePolicy",
+      "portal_name": "コンテナーのポイントインタイム リストアを有効にする",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "データ管理 / データ保護 / 復旧": "コンテナーのポイントインタイム リストアを有効にする"
+      }
+    },
+    "keysource": {
+      "name": "encryption.keySource",
+      "portal_name": "暗号化の種類",
+      "description": "",
+      "type_info": "",
+      "value_map": {
+        "Microsoft マネージド キー": "Microsoft.Storage",
+        "カスタマー マネージド キー": "Microsoft.Keyvault"
+      },
+      "portal_names": {
+        "セキュリティとネットワーク / 暗号化 / 暗号化": "暗号化の種類",
+        "セキュリティとネットワーク / 暗号化": "暗号化の種類"
+      },
+      "confirmed": true
+    },
+    "sku": {
+      "name": "sku.name",
+      "portal_name": "レプリケーション",
+      "description": "",
+      "type_info": "",
+      "value_map": {
+        "ローカル冗長ストレージ (LRS)": "Standard_LRS",
+        "ゾーン冗長ストレージ (ZRS)": "Standard_ZRS",
+        "geo 冗長ストレージ (GRS)": "Standard_GRS",
+        "読み取りアクセス geo 冗長ストレージ (RA-GRS)": "Standard_RAGRS",
+        "geo ゾーン冗長ストレージ (GZRS)": "Standard_GZRS",
+        "読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS)": "Standard_RAGZRS"
+      }
+    },
+    "publishmicrosoftendpoints": {
+      "name": "routingPreference.publishMicrosoftEndpoints",
+      "portal_name": "Microsoft ネットワーク ルーティング (ルート固有のエンドポイント)",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "セキュリティとネットワーク / ネットワーク / ネットワーク ルーティング": "ルート固有のエンドポイントの公開 (Microsoft)"
+      }
+    },
+    "publishinternetendpoints": {
+      "name": "routingPreference.publishInternetEndpoints",
+      "portal_name": "インターネット ルーティング (ルート固有のエンドポイント)",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "セキュリティとネットワーク / ネットワーク / ネットワーク ルーティング": "ルート固有のエンドポイントの公開 (インターネット)"
+      }
+    },
+    "defaultaction": {
+      "name": "networkAcls.defaultAction",
+      "portal_name": "パブリック ネットワーク アクセス スコープ",
+      "description": "",
+      "type_info": "",
+      "value_map": {
+        "すべてのネットワークから有効にする": "Allow",
+        "選択したネットワークから有効にする": "Deny",
+        "選択されたネットワークから有効にする": "Deny"
+      },
+      "portal_names": {
+        "概要 / プロパティ / ネットワーク": "パブリック ネットワーク アクセス スコープ",
+        "セキュリティとネットワーク / ネットワーク / パブリック ネットワーク アクセス": "パブリック ネットワーク アクセス スコープ",
+        "セキュリティとネットワーク / ネットワーク / パブリック アクセス": "パブリック ネットワーク アクセス スコープ"
+      },
+      "confirmed": true
+    },
+    "bypass": {
+      "name": "networkAcls.bypass",
+      "portal_name": "Exceptions",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "セキュリティとネットワーク / ネットワーク / リソース アクセスの設定": "Exceptions",
+        "セキュリティとネットワーク / ネットワーク / パブリック アクセス": "Exceptions"
+      },
+      "confirmed": true
+    },
+    "iprules": {
+      "name": "networkAcls.ipRules",
+      "portal_name": "IPv4 アドレス範囲",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "セキュリティとネットワーク / ネットワーク / リソース アクセスの設定": "IPv4 Addresses"
+      }
+    },
+    "ipv6rules": {
+      "name": "networkAcls.ipv6Rules",
+      "portal_name": "IPv6 アドレス範囲",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "セキュリティとネットワーク / ネットワーク / リソース アクセスの設定": "IPv6 Addresses"
+      }
+    },
+    "customdomain": {
+      "name": "customDomain.name",
+      "portal_name": "カスタム ドメイン",
+      "description": "",
+      "type_info": ""
+    },
+    "staticwebsite": {
+      "name": "staticWebsite.enabled",
+      "portal_name": "静的な Web サイト",
+      "description": "",
+      "type_info": "",
+      "value_map": {
+        "有効": "true",
+        "無効": "false"
+      }
+    },
+    "indexdocument": {
+      "name": "staticWebsite.indexDocument",
+      "portal_name": "インデックス ドキュメント名",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "データ管理 / 静的な Web サイト": "インデックス ドキュメント名"
+      }
+    },
+    "errordocument404path": {
+      "name": "staticWebsite.errorDocument404Path",
+      "portal_name": "エラー ドキュメントのパス",
+      "description": "",
+      "type_info": "",
+      "portal_names": {
+        "データ管理 / 静的な Web サイト": "エラー ドキュメントのパス"
+      }
+    },
+    "name": {
+      "name": "name",
+      "portal_name": "リソース名",
+      "portal_names": {
+        "ページヘッダー": "リソース名"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "ゾーン冗長ストレージ (ZRS)": "Standard_ZRS"
+      }
+    },
+    "corsrules": {
+      "name": "networkAcls.corsRules",
+      "portal_name": "リソースの共有 (CORS)",
+      "description": "",
+      "type_info": ""
+    },
+    "sas": {
+      "name": "sas",
+      "portal_name": "Shared Access Signature",
+      "description": "",
+      "type_info": ""
+    },
+    "allowedservices": {
+      "name": "sas.allowedServices",
+      "portal_name": "使用できるサービス",
+      "portal_names": {
+        "セキュリティとネットワーク / Shared Access Signature": "使用できるサービス"
+      },
+      "description": "",
+      "type_info": ""
+    },
+    "allowedresourcetypes": {
+      "name": "sas.allowedResourceTypes",
+      "portal_name": "使用できるリソースの種類",
+      "portal_names": {
+        "セキュリティとネットワーク / Shared Access Signature": "使用できるリソースの種類"
+      },
+      "description": "",
+      "type_info": ""
+    },
+    "allowedpermissions": {
+      "name": "sas.allowedPermissions",
+      "portal_name": "与えられているアクセス許可",
+      "portal_names": {
+        "セキュリティとネットワーク / Shared Access Signature": "与えられているアクセス許可"
+      },
+      "description": "",
+      "type_info": ""
+    },
+    "allowedipaddresses": {
+      "name": "sas.allowedIpAddresses",
+      "portal_name": "使用できる IP アドレス",
+      "portal_names": {
+        "セキュリティとネットワーク / Shared Access Signature": "使用できる IP アドレス"
+      },
+      "description": "",
+      "type_info": ""
+    },
+    "protocols": {
+      "name": "sas.protocols",
+      "portal_name": "許可されるプロトコル",
+      "portal_names": {
+        "セキュリティとネットワーク / Shared Access Signature": "許可されるプロトコル"
+      },
+      "description": "",
+      "type_info": ""
+    },
+    "start": {
+      "name": "sas.start",
+      "portal_name": "開始日時",
+      "portal_names": {
+        "セキュリティとネットワーク / Shared Access Signature": "開始日時"
+      },
+      "description": "",
+      "type_info": ""
+    },
+    "expiry": {
+      "name": "sas.expiry",
+      "portal_name": "終了",
+      "portal_names": {
+        "セキュリティとネットワーク / Shared Access Signature": "終了"
+      },
+      "description": "",
+      "type_info": ""
+    },
+    "signedkey": {
+      "name": "sas.signedKey",
+      "portal_name": "署名キー",
+      "portal_names": {
+        "セキュリティとネットワーク / Shared Access Signature": "署名キー"
+      },
+      "description": "",
+      "type_info": ""
+    },
+    "state": {
+      "name": "encryptionScope.state",
+      "portal_name": "状態",
+      "portal_names": {
+        "セキュリティとネットワーク / 暗号化 / 暗号化スコープ": "状態"
+      },
+      "description": "",
+      "type_info": ""
+    },
+    "keytype": {
+      "name": "encryption.services.file.keyType",
+      "portal_name": "カスタマー マネージド キーのサポートを有効にする",
+      "portal_names": {
+        "セキュリティとネットワーク / 暗号化 / 暗号化スコープ": "暗号化の種類",
+        "セキュリティとネットワーク / 暗号化": "カスタマー マネージド キーのサポートを有効にする"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "BLOB とファイルのみ": "Account"
+      }
+    },
+    "enableautotiertohotfromcool": {
+      "name": "managementPolicy.enableAutoTierToHotFromCool",
+      "portal_name": "アクセス追跡を有効にする",
+      "portal_names": {
+        "データ管理 / ライフサイクル管理": "アクセス追跡を有効にする"
+      },
+      "description": "",
+      "type_info": ""
+    },
+    "allowedorigins": {
+      "name": "corsRules.allowedOrigins",
+      "portal_name": "許可されたオリジン",
+      "portal_names": {
+        "設定 / リソースの共有 (CORS) / Blob service": "許可されたオリジン"
+      },
+      "description": "",
+      "type_info": ""
+    },
+    "allowedmethods": {
+      "name": "corsRules.allowedMethods",
+      "portal_name": "許可されたメソッド",
+      "portal_names": {
+        "設定 / リソースの共有 (CORS) / Blob service": "許可されたメソッド"
+      },
+      "description": "",
+      "type_info": ""
+    },
+    "allowedheaders": {
+      "name": "corsRules.allowedHeaders",
+      "portal_name": "許可されたヘッダー",
+      "portal_names": {
+        "設定 / リソースの共有 (CORS) / Blob service": "許可されたヘッダー"
+      },
+      "description": "",
+      "type_info": ""
+    },
+    "exposedheaders": {
+      "name": "corsRules.exposedHeaders",
+      "portal_name": "公開されるヘッダー",
+      "portal_names": {
+        "設定 / リソースの共有 (CORS) / Blob service": "公開されるヘッダー"
+      },
+      "description": "",
+      "type_info": ""
+    },
+    "maxageinseconds": {
+      "name": "corsRules.maxAgeInSeconds",
+      "portal_name": "最長有効期間",
+      "portal_names": {
+        "設定 / リソースの共有 (CORS) / Blob service": "最長有効期間"
+      },
+      "description": "",
+      "type_info": ""
+    },
+    "defaulttooauthauthentication": {
+      "name": "defaultToOAuthAuthentication",
+      "portal_name": "Azure portal で Microsoft Entra 認可を規定にする",
+      "portal_names": {
+        "設定 / 構成": "Azure portal で Microsoft Entra 認可を規定にする"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "無効": "false"
+      }
+    },
+    "deleteretentionpolicy.enabled": {
+      "name": "deleteRetentionPolicy.enabled",
+      "portal_name": "BLOB の論理的な削除を有効にする",
+      "portal_names": {
+        "データ管理 / データ保護 / 復旧": "BLOB の論理的な削除を有効にする"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true"
+      }
+    },
+    "deleteretentionpolicy.days": {
+      "name": "deleteRetentionPolicy.days",
+      "portal_name": "削除した BLOB の保持期間 (日数)",
+      "portal_names": {
+        "データ管理 / データ保護 / 復旧": "削除した BLOB の保持期間 (日数)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "containerdeleteretentionpolicy.enabled": {
+      "name": "containerDeleteRetentionPolicy.enabled",
+      "portal_name": "コンテナーの論理的な削除を有効にする",
+      "portal_names": {
+        "データ管理 / データ保護 / 復旧": "コンテナーの論理的な削除を有効にする"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true"
+      }
+    },
+    "containerdeleteretentionpolicy.days": {
+      "name": "containerDeleteRetentionPolicy.days",
+      "portal_name": "削除したコンテナーの保持期間 (日数)",
+      "portal_names": {
+        "データ管理 / データ保護 / 復旧": "削除したコンテナーの保持期間 (日数)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "staticwebsite.enabled": {
+      "name": "staticWebsite.enabled",
+      "portal_name": "静的な Web サイト",
+      "portal_names": {
+        "データ管理 / 静的な Web サイト": "静的な Web サイト"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "無効": "false"
+      }
+    },
+    "sku.name": {
+      "name": "sku.name",
+      "portal_name": "冗長性",
+      "portal_names": {
+        "データ管理 / 冗長性": "冗長性",
+        "概要 / プロパティ": "レプリケーション"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "ローカル冗長ストレージ (LRS)": "Standard_LRS",
+        "地理冗長ストレージ (GRS)": "Standard_GRS",
+        "ゾーン冗長ストレージ (ZRS)": "Standard_ZRS",
+        "geo 冗長ストレージ (GRS)": "Standard_GRS"
+      }
+    },
+    "sku.tier": {
+      "name": "sku.tier",
+      "portal_name": "パフォーマンス",
+      "portal_names": {
+        "設定 / 構成": "パフォーマンス"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "sharequota": {
+      "name": "shareQuota",
+      "portal_name": "共有クォータ (GiB)",
+      "portal_names": {
+        "データ ストレージ / クラシック ファイル共有": "クォータ",
+        "データ ストレージ / クラシック ファイル共有 / 概要": "共有クォータ (GiB)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "6 GiB": "6"
+      }
+    },
+    "sharedeleteretentionpolicy.days": {
+      "name": "shareDeleteRetentionPolicy.days",
+      "portal_name": "論理的な削除 (日数)",
+      "portal_names": {
+        "データ ストレージ / クラシック ファイル共有": "論理的な削除 (日数)",
+        "概要 / プロパティ / File service": "論理的な削除 (日数)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "7 日": "7"
+      }
+    },
+    "sharedeleteretentionpolicy.enabled": {
+      "name": "shareDeleteRetentionPolicy.enabled",
+      "portal_name": "論理的な削除",
+      "portal_names": {
+        "データ ストレージ / クラシック ファイル共有": "論理的な削除",
+        "概要 / プロパティ / File service": "論理的な削除"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true",
+        "無効": "false"
+      }
+    },
+    "isversioningenabled": {
+      "name": "isVersioningEnabled",
+      "portal_name": "BLOB のバージョン管理を有効にする",
+      "portal_names": {
+        "概要 / プロパティ / Blob service": "バージョン管理",
+        "データ管理 / データ保護 / 追跡": "BLOB のバージョン管理を有効にする"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true",
+        "無効": "false"
+      }
+    },
+    "changefeed.enabled": {
+      "name": "changeFeed.enabled",
+      "portal_name": "BLOB の変更フィードを有効にする",
+      "portal_names": {
+        "概要 / プロパティ / Blob service": "変更フィード",
+        "データ管理 / データ保護 / 追跡": "BLOB の変更フィードを有効にする"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true",
+        "無効": "false"
+      }
+    },
+    "retentionindays": {
+      "name": "changeFeed.retentionInDays",
+      "portal_name": "変更フィードログを削除するまでの期間 (日数)",
+      "portal_names": {
+        "データ管理 / データ保護 / 追跡": "変更フィードログを削除するまでの期間 (日数)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "allowpermanentdelete": {
+      "name": "deleteRetentionPolicy.allowPermanentDelete",
+      "portal_name": "論理的に削除された項目の完全な削除を有効にする",
+      "portal_names": {
+        "データ管理 / データ保護 / 復旧": "論理的に削除された項目の完全な削除を有効にする"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true",
+        "無効": "false"
+      }
+    },
+    "publicaccess": {
+      "name": "publicAccess",
+      "portal_name": "パブリック アクセス",
+      "portal_names": {
+        "データ ストレージ / コンテナー / 概要": "パブリック アクセス"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "Container": "Container",
+        "Blob": "Blob",
+        "None": "None"
+      }
+    },
+    "defaultencryptionscope": {
+      "name": "defaultEncryptionScope",
+      "portal_name": "既定の暗号化スコープ",
+      "portal_names": {
+        "データ ストレージ / コンテナー / 概要": "既定の暗号化スコープ"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "denyencryptionscopeoverride": {
+      "name": "denyEncryptionScopeOverride",
+      "portal_name": "暗号化スコープのオーバーライドを拒否する",
+      "portal_names": {
+        "データ ストレージ / コンテナー / 概要": "暗号化スコープのオーバーライドを拒否する"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true",
+        "無効": "false"
+      }
+    },
+    "immutablestoragewithversioning.enabled": {
+      "name": "immutableStorageWithVersioning.enabled",
+      "portal_name": "Immutable storage with versioning - Enabled",
+      "portal_names": {
+        "データ ストレージ / コンテナー / 概要": "Immutable storage with versioning - Enabled"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "無効": "false"
+      }
+    },
+    "enabledprotocols": {
+      "name": "enabledProtocols",
+      "portal_name": "転送プロトコル",
+      "portal_names": {
+        "データ ストレージ / クラシック ファイル共有 / 概要": "転送プロトコル"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    }
+  },
+  "network": {
+    "location": {
+      "name": "location",
+      "portal_name": "場所",
+      "portal_names": {
+        "概要": "場所",
+        "ページヘッダー / 概要": "場所"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "addressprefixes": {
+      "name": "addressSpace.addressPrefixes",
+      "portal_name": "アドレス空間",
+      "portal_names": {
+        "概要": "アドレス空間",
+        "設定 / アドレス空間": "アドレス空間"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "dnsservers": {
+      "name": "dhcpOptions.dnsServers",
+      "portal_name": "カスタム DNS サーバー",
+      "portal_names": {
+        "概要": "DNS サーバー",
+        "設定 / DNS サーバー": "カスタム DNS サーバー"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "subnets.name": {
+      "name": "subnets[*].name",
+      "portal_name": "名前",
+      "portal_names": {
+        "設定 / サブネット": "名前"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "addressprefix": {
+      "name": "subnets[*].addressPrefix",
+      "portal_name": "アドレス範囲 (IPv4)",
+      "portal_names": {
+        "設定 / サブネット": "アドレス範囲 (IPv4)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "enableddosprotection": {
+      "name": "enableDdosProtection",
+      "portal_name": "DDoS Network Protection",
+      "portal_names": {
+        "設定 / DDoS 保護": "DDoS Network Protection"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "無効化": "false",
+        "有効化": "true"
+      }
+    },
+    "serviceendpoints": {
+      "name": "subnets[*].serviceEndpoints",
+      "portal_name": "サービス エンドポイント",
+      "portal_names": {
+        "設定 / サブネット (詳細)": "サービス エンドポイント"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "networksecuritygroup.id": {
+      "name": "subnets[*].networkSecurityGroup.id",
+      "portal_name": "ネットワーク セキュリティ グループ",
+      "portal_names": {
+        "設定 / サブネット (詳細)": "ネットワーク セキュリティ グループ"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "routetable.id": {
+      "name": "subnets[*].routeTable.id",
+      "portal_name": "ルート テーブル",
+      "portal_names": {
+        "設定 / サブネット (詳細)": "ルート テーブル"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "delegations": {
+      "name": "subnets[*].delegations",
+      "portal_name": "委任",
+      "portal_names": {
+        "設定 / サブネット (詳細)": "委任"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "privateendpointnetworkpolicies": {
+      "name": "subnets[*].privateEndpointNetworkPolicies",
+      "portal_name": "プライベート エンドポイント ネットワーク ポリシー",
+      "portal_names": {
+        "設定 / サブネット (詳細)": "プライベート エンドポイント ネットワーク ポリシー"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "無効": "Disabled"
+      }
+    },
+    "privatelinkservicenetworkpolicies": {
+      "name": "subnets[*].privateLinkServiceNetworkPolicies",
+      "portal_name": "プライベート リンク サービス ネットワーク ポリシー",
+      "portal_names": {
+        "設定 / サブネット (詳細)": "プライベート リンク サービス ネットワーク ポリシー"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "Enabled"
+      }
+    },
+    "name": {
+      "name": "name",
+      "portal_name": "リソース名",
+      "portal_names": {
+        "ページヘッダー / 概要": "リソース名"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "id": {
+      "name": "id",
+      "portal_name": "リソース ID",
+      "portal_names": {
+        "設定 / プロパティ / 概要": "リソース ID"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    }
+  },
+  "nsg": {
+    "priority": {
+      "name": "securityRules[*].priority",
+      "portal_name": "優先度",
+      "portal_names": {
+        "概要": "優先度",
+        "設定 / 受信セキュリティ規則": "優先度",
+        "設定 / 送信セキュリティ規則": "優先度"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "securityrules.name": {
+      "name": "securityRules[*].name",
+      "portal_name": "名前",
+      "portal_names": {
+        "概要": "名前",
+        "設定 / 受信セキュリティ規則": "名前",
+        "設定 / 送信セキュリティ規則": "名前"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "destinationportrange": {
+      "name": "securityRules[*].destinationPortRange",
+      "portal_name": "ポート",
+      "portal_names": {
+        "概要": "ポート",
+        "設定 / 受信セキュリティ規則": "ポート",
+        "設定 / 送信セキュリティ規則": "ポート"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "任意": "*"
+      }
+    },
+    "protocol": {
+      "name": "securityRules[*].protocol",
+      "portal_name": "プロトコル",
+      "portal_names": {
+        "概要": "プロトコル",
+        "設定 / 受信セキュリティ規則": "プロトコル",
+        "設定 / 送信セキュリティ規則": "プロトコル"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "Tcp": "Tcp",
+        "Udp": "Udp",
+        "任意": "*"
+      }
+    },
+    "sourceaddressprefix": {
+      "name": "securityRules[*].sourceAddressPrefix",
+      "portal_name": "ソース",
+      "portal_names": {
+        "概要": "ソース",
+        "設定 / 受信セキュリティ規則": "ソース",
+        "設定 / 送信セキュリティ規則": "ソース"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "destinationaddressprefix": {
+      "name": "securityRules[*].destinationAddressPrefix",
+      "portal_name": "宛先",
+      "portal_names": {
+        "概要": "宛先",
+        "設定 / 受信セキュリティ規則": "宛先",
+        "設定 / 送信セキュリティ規則": "宛先"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "access": {
+      "name": "securityRules[*].access",
+      "portal_name": "アクション",
+      "portal_names": {
+        "概要": "アクション",
+        "設定 / 受信セキュリティ規則": "アクション",
+        "設定 / 送信セキュリティ規則": "アクション"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "Allow": "Allow",
+        "Deny": "Deny"
+      }
+    },
+    "direction": {
+      "name": "securityRules[*].direction",
+      "portal_name": "方向",
+      "portal_names": {
+        "概要": "方向"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "受信セキュリティ規則": "Inbound",
+        "送信セキュリティ規則": "Outbound"
+      }
+    },
+    "sourceportrange": {
+      "name": "securityRules[*].sourcePortRange",
+      "portal_name": "ソース ポート範囲",
+      "portal_names": {
+        "設定 / 受信セキュリティ規則": "ソース ポート範囲"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "任意": "*"
+      }
+    },
+    "name": {
+      "name": "name",
+      "portal_name": "リソース名",
+      "portal_names": {
+        "ページヘッダー / 概要": "リソース名"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "location": {
+      "name": "location",
+      "portal_name": "場所",
+      "portal_names": {
+        "ページヘッダー / 概要": "場所"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "id": {
+      "name": "id",
+      "portal_name": "リソース ID",
+      "portal_names": {
+        "設定 / プロパティ / 概要": "リソース ID"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    }
+  },
+  "keyvault": {
+    "sku.name": {
+      "name": "properties.sku.name",
+      "portal_name": "SKU (価格レベル)",
+      "portal_names": {
+        "概要": "SKU (価格レベル)",
+        "設定 / プロパティ": "SKU (価格レベル)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "プレミアム": "premium",
+        "標準": "standard"
+      }
+    },
+    "tenantid": {
+      "name": "properties.tenantId",
+      "portal_name": "ディレクトリ ID",
+      "portal_names": {
+        "概要": "ディレクトリ ID",
+        "設定 / プロパティ": "ディレクトリ ID"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "enablesoftdelete": {
+      "name": "properties.enableSoftDelete",
+      "portal_name": "論理的な削除",
+      "portal_names": {
+        "設定 / プロパティ": "論理的な削除"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true"
+      }
+    },
+    "softdeleteretentionindays": {
+      "name": "properties.softDeleteRetentionInDays",
+      "portal_name": "削除されたコンテナーを保持する日数",
+      "portal_names": {
+        "設定 / プロパティ": "削除されたコンテナーを保持する日数"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "enablepurgeprotection": {
+      "name": "properties.enablePurgeProtection",
+      "portal_name": "消去保護",
+      "portal_names": {
+        "設定 / プロパティ": "消去保護"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "消去保護を無効にする": "false",
+        "消去保護を有効にする": "true"
+      }
+    },
+    "publicnetworkaccess": {
+      "name": "properties.publicNetworkAccess",
+      "portal_name": "許可するアクセス",
+      "portal_names": {
+        "設定 / ネットワーク": "許可するアクセス"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "特定のネットワークおよびIPアドレスからのみパブリックアクセスを許可する": "Enabled",
+        "すべてのネットワークからのパブリックアクセスを許可する": "Enabled",
+        "パブリックアクセスの無効化": "Disabled"
+      }
+    },
+    "defaultaction": {
+      "name": "properties.networkAcls.defaultAction",
+      "portal_name": "許可するアクセス",
+      "portal_names": {
+        "設定 / ネットワーク": "許可するアクセス"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "特定のネットワークおよびIPアドレスからのみパブリックアクセスを許可する": "Deny"
+      }
+    },
+    "bypass": {
+      "name": "properties.networkAcls.bypass",
+      "portal_name": "信頼された Microsoft サービスによるファイアウォールのバイパスを許可する",
+      "portal_names": {
+        "設定 / ネットワーク": "信頼された Microsoft サービスによるファイアウォールのバイパスを許可する"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "AzureServices"
+      }
+    },
+    "iprules": {
+      "name": "properties.networkAcls.ipRules",
+      "portal_name": "ファイアウォール / IP アドレス",
+      "portal_names": {
+        "設定 / ネットワーク": "ファイアウォール / IP アドレス"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "enablerbacauthorization": {
+      "name": "properties.enableRbacAuthorization",
+      "portal_name": "アクセス許可モデル",
+      "portal_names": {
+        "設定 / アクセス構成": "アクセス許可モデル"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "Azure ロールベースのアクセス制御 (推奨)": "true",
+        "コンテナーのアクセスポリシー": "false"
+      }
+    },
+    "virtualnetworkrules": {
+      "name": "properties.networkAcls.virtualNetworkRules",
+      "portal_name": "Virtual networks",
+      "portal_names": {
+        "設定 / ネットワーク": "Virtual networks"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "vaulturi": {
+      "name": "properties.vaultUri",
+      "portal_name": "コンテナーの URI",
+      "portal_names": {
+        "設定 / プロパティ": "コンテナーの URI"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "enabledfordeployment": {
+      "name": "properties.enabledForDeployment",
+      "portal_name": "Azure Virtual Machines がデプロイのためにシークレットを参照できるようにする",
+      "portal_names": {
+        "設定 / アクセス構成 (コンテナーのアクセス ポリシー時)": "Azure Virtual Machines がデプロイのためにシークレットを参照できるようにする"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true"
+      }
+    },
+    "enabledfordiskencryption": {
+      "name": "properties.enabledForDiskEncryption",
+      "portal_name": "Azure Disk Encryption がシークレットとキーを参照できるようにする",
+      "portal_names": {
+        "設定 / アクセス構成 (コンテナーのアクセス ポリシー時)": "Azure Disk Encryption がシークレットとキーを参照できるようにする"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true"
+      }
+    },
+    "enabledfortemplatedeployment": {
+      "name": "properties.enabledForTemplateDeployment",
+      "portal_name": "Azure Resource Manager がテンプレートのデプロイのためにシークレットを参照できるようにする",
+      "portal_names": {
+        "設定 / アクセス構成 (コンテナーのアクセス ポリシー時)": "Azure Resource Manager がテンプレートのデプロイのためにシークレットを参照できるようにする"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true"
+      }
+    },
+    "iprules.value": {
+      "name": "properties.networkAcls.ipRules[*].value",
+      "portal_name": "ファイアウォール / IP アドレス",
+      "portal_names": {
+        "設定 / ネットワーク": "ファイアウォール / IP アドレス"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "name": {
+      "name": "name",
+      "portal_name": "リソース名",
+      "portal_names": {
+        "ページヘッダー / 概要": "リソース名"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "location": {
+      "name": "location",
+      "portal_name": "場所",
+      "portal_names": {
+        "ページヘッダー / 概要": "場所"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "id": {
+      "name": "id",
+      "portal_name": "リソース ID",
+      "portal_names": {
+        "設定 / プロパティ / 概要": "リソース ID"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    }
+  },
+  "caenv": {
+    "location": {
+      "name": "location",
+      "portal_name": "場所",
+      "portal_names": {
+        "概要": "場所",
+        "ページヘッダー / 概要": "場所"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "zoneredundant": {
+      "name": "properties.zoneRedundant",
+      "portal_name": "ゾーン冗長",
+      "portal_names": {
+        "概要": "ゾーン冗長"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "無効": "false",
+        "有効": "true"
+      }
+    },
+    "internal": {
+      "name": "properties.vnetConfiguration.internal",
+      "portal_name": "仮想ネットワーク",
+      "portal_names": {
+        "設定 / ネットワーク": "仮想ネットワーク"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "統合されていません": "false"
+      }
+    },
+    "destination": {
+      "name": "properties.appLogsConfiguration.destination",
+      "portal_name": "ログの送信先",
+      "portal_names": {
+        "設定 / ログ オプション": "ログの送信先"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "Azure Log Analytics": "log-analytics"
+      }
+    },
+    "customerid": {
+      "name": "properties.appLogsConfiguration.logAnalyticsConfiguration.customerId",
+      "portal_name": "Log Analytics ワークスペース",
+      "portal_names": {
+        "設定 / ログ オプション": "Log Analytics ワークスペース"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "name": {
+      "name": "name",
+      "portal_name": "リソース名",
+      "portal_names": {
+        "ページヘッダー / 概要": "リソース名"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "version": {
+      "name": "properties.daprConfiguration.version",
+      "portal_name": "Dapr バージョン",
+      "portal_names": {
+        "概要": "Dapr バージョン"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "staticip": {
+      "name": "properties.staticIp",
+      "portal_name": "静的 IP",
+      "portal_names": {
+        "概要": "静的 IP"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "defaultdomain": {
+      "name": "properties.defaultDomain",
+      "portal_name": "ドメイン名",
+      "portal_names": {
+        "概要": "ドメイン名"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "eventstreamendpoint": {
+      "name": "properties.eventStreamEndpoint",
+      "portal_name": "イベント ストリーム エンドポイント",
+      "portal_names": {
+        "概要": "イベント ストリーム エンドポイント"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "publicnetworkaccess": {
+      "name": "properties.publicNetworkAccess",
+      "portal_name": "パブリック ネットワーク アクセス",
+      "portal_names": {
+        "設定 / ネットワーク": "パブリック ネットワーク アクセス"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "Enabled"
+      }
+    },
+    "mtls.enabled": {
+      "name": "properties.peerAuthentication.mtls.enabled",
+      "portal_name": "ピア認証 (mTLS)",
+      "portal_names": {
+        "設定 / ネットワーク": "ピア認証 (mTLS)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "encryption.enabled": {
+      "name": "properties.peerTrafficConfiguration.encryption.enabled",
+      "portal_name": "ピア トラフィック暗号化",
+      "portal_names": {
+        "設定 / ネットワーク": "ピア トラフィック暗号化"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "customdomainverificationid": {
+      "name": "properties.customDomainConfiguration.customDomainVerificationId",
+      "portal_name": "カスタム ドメイン確認 ID",
+      "portal_names": {
+        "設定 / カスタム ドメイン": "カスタム ドメイン確認 ID"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "id": {
+      "name": "id",
+      "portal_name": "リソース ID",
+      "portal_names": {
+        "設定 / プロパティ / 概要": "リソース ID"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    }
+  },
+  "ca": {
+    "managedenvironmentid": {
+      "name": "properties.managedEnvironmentId",
+      "portal_name": "Container Apps 環境",
+      "portal_names": {
+        "概要": "Container Apps 環境"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "external": {
+      "name": "properties.configuration.ingress.external",
+      "portal_name": "インターネット トラフィック",
+      "portal_names": {
+        "設定 / イングレス": "インターネット トラフィック"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "どこからでもトラフィックを受け入れます": "true",
+        "Container Apps 環境内からのトラフィックのみ": "false"
+      }
+    },
+    "targetport": {
+      "name": "properties.configuration.ingress.targetPort",
+      "portal_name": "ターゲット ポート",
+      "portal_names": {
+        "設定 / イングレス": "ターゲット ポート"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "minreplicas": {
+      "name": "properties.template.scale.minReplicas",
+      "portal_name": "最小レプリカ数",
+      "portal_names": {
+        "設定 / スケーリング": "最小レプリカ数"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "maxreplicas": {
+      "name": "properties.template.scale.maxReplicas",
+      "portal_name": "最大レプリカ数",
+      "portal_names": {
+        "設定 / スケーリング": "最大レプリカ数"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "identity.type": {
+      "name": "identity.type",
+      "portal_name": "状態 (システム割り当て済み)",
+      "portal_names": {
+        "設定 / ID": "状態 (システム割り当て済み)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "オン": "SystemAssigned",
+        "オフ": "None"
+      }
+    },
+    "image": {
+      "name": "properties.template.containers[*].image",
+      "portal_name": "イメージとタグ",
+      "portal_names": {
+        "概要": "コンテナー イメージ",
+        "アプリケーション / コンテナー": "イメージとタグ"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "containers.name": {
+      "name": "properties.template.containers[*].name",
+      "portal_name": "名前",
+      "portal_names": {
+        "アプリケーション / コンテナー": "名前"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "cpu": {
+      "name": "properties.template.containers[*].resources.cpu",
+      "portal_name": "CPU とメモリ",
+      "portal_names": {
+        "アプリケーション / コンテナー": "CPU とメモリ"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "0.25 CPU コア": "0.25"
+      }
+    },
+    "memory": {
+      "name": "properties.template.containers[*].resources.memory",
+      "portal_name": "CPU とメモリ (メモリ)",
+      "portal_names": {
+        "アプリケーション / コンテナー": "CPU とメモリ (メモリ)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "0.5 Gi メモリ": "0.5Gi"
+      }
+    },
+    "allowinsecure": {
+      "name": "properties.configuration.ingress.allowInsecure",
+      "portal_name": "セキュリティで保護されていない接続",
+      "portal_names": {
+        "設定 / イングレス": "セキュリティで保護されていない接続"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "無効": "false",
+        "有効": "true"
+      }
+    },
+    "transport": {
+      "name": "properties.configuration.ingress.transport",
+      "portal_name": "イングレス タイプ",
+      "portal_names": {
+        "設定 / イングレス": "イングレス タイプ"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "HTTP": "Auto"
+      }
+    },
+    "activerevisionsmode": {
+      "name": "properties.configuration.activeRevisionsMode",
+      "portal_name": "デプロイ モード",
+      "portal_names": {
+        "アプリケーション / リビジョン": "デプロイ モード"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "Single": "Single",
+        "Multiple": "Multiple"
+      }
+    },
+    "weight": {
+      "name": "properties.configuration.ingress.traffic[*].weight",
+      "portal_name": "トラフィック (%)",
+      "portal_names": {
+        "アプリケーション / リビジョン": "トラフィック (%)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "latestrevision": {
+      "name": "properties.configuration.ingress.traffic[*].latestRevision",
+      "portal_name": "最新リビジョン",
+      "portal_names": {
+        "アプリケーション / リビジョン": "最新リビジョン"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true"
+      }
+    },
+    "name": {
+      "name": "name",
+      "portal_name": "リソース名",
+      "portal_names": {
+        "ページヘッダー / 概要": "リソース名"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "location": {
+      "name": "location",
+      "portal_name": "場所",
+      "portal_names": {
+        "ページヘッダー / 概要": "場所"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "maxinactiverevisions": {
+      "name": "properties.configuration.maxInactiveRevisions",
+      "portal_name": "最大非アクティブ リビジョン数",
+      "portal_names": {
+        "アプリケーション / リビジョン": "最大非アクティブ リビジョン数"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "cooldownperiod": {
+      "name": "properties.template.scale.cooldownPeriod",
+      "portal_name": "クールダウン期間 (秒)",
+      "portal_names": {
+        "設定 / スケーリング": "クールダウン期間 (秒)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "pollinginterval": {
+      "name": "properties.template.scale.pollingInterval",
+      "portal_name": "ポーリング間隔 (秒)",
+      "portal_names": {
+        "設定 / スケーリング": "ポーリング間隔 (秒)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "ephemeralstorage": {
+      "name": "properties.template.containers[*].resources.ephemeralStorage",
+      "portal_name": "エフェメラル ストレージ",
+      "portal_names": {
+        "アプリケーション / コンテナー": "エフェメラル ストレージ"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "fqdn": {
+      "name": "properties.configuration.ingress.fqdn",
+      "portal_name": "エンドポイント",
+      "portal_names": {
+        "概要": "アプリケーション URL",
+        "設定 / イングレス": "エンドポイント"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "outboundipaddresses": {
+      "name": "properties.outboundIpAddresses[*]",
+      "portal_name": "送信 IP アドレス",
+      "portal_names": {
+        "概要": "送信 IP アドレス"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "latestreadyrevisionname": {
+      "name": "properties.latestReadyRevisionName",
+      "portal_name": "最新リビジョン名",
+      "portal_names": {
+        "アプリケーション / リビジョン": "最新リビジョン名"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "exposedport": {
+      "name": "properties.configuration.ingress.exposedPort",
+      "portal_name": "追加の TCP ポート",
+      "portal_names": {
+        "設定 / イングレス": "追加の TCP ポート"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "runningstatus": {
+      "name": "properties.runningStatus",
+      "portal_name": "状態",
+      "portal_names": {
+        "概要": "状態"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "id": {
+      "name": "id",
+      "portal_name": "リソース ID",
+      "portal_names": {
+        "設定 / プロパティ / 概要": "リソース ID"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "principalid": {
+      "name": "identity.principalId",
+      "portal_name": "オブジェクト (プリンシパル) ID",
+      "portal_names": {
+        "設定 / ID": "オブジェクト (プリンシパル) ID"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    }
+  },
+  "agw": {
+    "sku.tier": {
+      "name": "sku.tier",
+      "portal_name": "レベル",
+      "portal_names": {
+        "概要": "レベル"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "WAF V2": "WAF_v2",
+        "Standard V2": "Standard_v2"
+      }
+    },
+    "backendaddresspools.name": {
+      "name": "backendAddressPools[*].name",
+      "portal_name": "名前",
+      "portal_names": {
+        "設定 / バックエンド プール": "名前"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "httplisteners.name": {
+      "name": "httpListeners[*].name",
+      "portal_name": "名前",
+      "portal_names": {
+        "設定 / リスナー": "名前"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "protocol": {
+      "name": "backendHttpSettingsCollection[*].protocol",
+      "portal_name": "プロトコル",
+      "portal_names": {
+        "設定 / リスナー": "プロトコル",
+        "設定 / バックエンド設定": "プロトコル"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "requestroutingrules.name": {
+      "name": "requestRoutingRules[*].name",
+      "portal_name": "名前",
+      "portal_names": {
+        "設定 / ルール": "名前"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "ruletype": {
+      "name": "requestRoutingRules[*].ruleType",
+      "portal_name": "種別",
+      "portal_names": {
+        "設定 / ルール": "種別"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "priority": {
+      "name": "requestRoutingRules[*].priority",
+      "portal_name": "優先度",
+      "portal_names": {
+        "設定 / ルール": "優先度"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "firewallpolicy.id": {
+      "name": "firewallPolicy.id",
+      "portal_name": "関連する Web アプリケーション ファイアウォール ポリシー",
+      "portal_names": {
+        "設定 / Web アプリケーション ファイアウォール": "関連する Web アプリケーション ファイアウォール ポリシー"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "backendhttpsettingscollection.name": {
+      "name": "backendHttpSettingsCollection[*].name",
+      "portal_name": "名前",
+      "portal_names": {
+        "設定 / バックエンド設定": "名前"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "port": {
+      "name": "backendHttpSettingsCollection[*].port",
+      "portal_name": "ポート",
+      "portal_names": {
+        "設定 / バックエンド設定": "ポート"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "cookiebasedaffinity": {
+      "name": "backendHttpSettingsCollection[*].cookieBasedAffinity",
+      "portal_name": "Cookie ベースのアフィニティ",
+      "portal_names": {
+        "設定 / バックエンド設定": "Cookie ベースのアフィニティ"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "無効": "Disabled",
+        "有効": "Enabled"
+      }
+    },
+    "name": {
+      "name": "name",
+      "portal_name": "リソース名",
+      "portal_names": {
+        "ページヘッダー / 概要": "リソース名"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "location": {
+      "name": "location",
+      "portal_name": "場所",
+      "portal_names": {
+        "ページヘッダー / 概要": "場所"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "capacity": {
+      "name": "sku.capacity",
+      "portal_name": "インスタンス数",
+      "portal_names": {
+        "設定 / 構成": "インスタンス数"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "mincapacity": {
+      "name": "autoscaleConfiguration.minCapacity",
+      "portal_name": "自動スケーリング 最小インスタンス数",
+      "portal_names": {
+        "設定 / 構成": "自動スケーリング 最小インスタンス数"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "maxcapacity": {
+      "name": "autoscaleConfiguration.maxCapacity",
+      "portal_name": "自動スケーリング 最大インスタンス数",
+      "portal_names": {
+        "設定 / 構成": "自動スケーリング 最大インスタンス数"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "requesttimeout": {
+      "name": "backendHttpSettingsCollection[*].requestTimeout",
+      "portal_name": "要求のタイムアウト (秒)",
+      "portal_names": {
+        "設定 / バックエンド設定 (詳細)": "要求タイムアウト (秒)",
+        "設定 / バックエンド設定 (編集パネル)": "要求のタイムアウト (秒)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "pickhostnamefrombackendaddress": {
+      "name": "backendHttpSettingsCollection[*].pickHostNameFromBackendAddress",
+      "portal_name": "ホスト名をオーバーライドする",
+      "portal_names": {
+        "設定 / バックエンド設定 (詳細)": "バックエンド アドレスのホスト名を選択する",
+        "設定 / バックエンド設定 (編集パネル)": "ホスト名をオーバーライドする"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "無効": "false",
+        "いいえ": "false",
+        "はい": "true"
+      }
+    },
+    "connectiondraining.enabled": {
+      "name": "backendHttpSettingsCollection[*].connectionDraining.enabled",
+      "portal_name": "接続の切り離し",
+      "portal_names": {
+        "設定 / バックエンド設定 (詳細)": "接続の切り離し"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "requireservernameindication": {
+      "name": "httpListeners[*].requireServerNameIndication",
+      "portal_name": "サーバー名表示 (SNI) を要求する",
+      "portal_names": {
+        "設定 / リスナー (詳細)": "サーバー名表示 (SNI) を要求する"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "無効": "false"
+      }
+    },
+    "defaultpredefinedsslpolicy": {
+      "name": "defaultPredefinedSslPolicy",
+      "portal_name": "適用した SSL ポリシー",
+      "portal_names": {
+        "設定 / SSL 設定": "デフォルト SSL ポリシー",
+        "設定 / リスナー": "適用した SSL ポリシー"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "dedicatedbackendconnection": {
+      "name": "backendHttpSettingsCollection[*].dedicatedBackendConnection",
+      "portal_name": "専用バックエンド接続",
+      "portal_names": {
+        "設定 / バックエンド設定 (編集パネル)": "専用バックエンド接続"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "無効化": "false",
+        "有効化": "true"
+      }
+    },
+    "id": {
+      "name": "id",
+      "portal_name": "リソース ID",
+      "portal_names": {
+        "設定 / プロパティ / 概要": "リソース ID"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    }
+  },
+  "firewall": {
+    "sku.tier": {
+      "name": "sku.tier",
+      "portal_name": "SKU",
+      "portal_names": {
+        "概要": "SKU"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "Standard": "Standard",
+        "Premium": "Premium"
+      }
+    },
+    "firewallpolicy.id": {
+      "name": "firewallPolicy.id",
+      "portal_name": "ファイアウォール ポリシー",
+      "portal_names": {
+        "概要": "ファイアウォール ポリシー"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "threatintelmode": {
+      "name": "threatIntelMode",
+      "portal_name": "Threat Intelligence モード",
+      "portal_names": {
+        "概要": "Threat Intelligence モード"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "Alert": "Alert",
+        "Deny": "Deny",
+        "Off": "Off"
+      }
+    },
+    "ipconfigurations.name": {
+      "name": "ipConfigurations[*].name",
+      "portal_name": "名前",
+      "portal_names": {
+        "設定 / パブリック IP 構成": "名前"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "subnet.id": {
+      "name": "ipConfigurations[*].subnet.id",
+      "portal_name": "サブネット",
+      "portal_names": {
+        "概要": "サブネット"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "publicipaddress.id": {
+      "name": "ipConfigurations[*].publicIPAddress.id",
+      "portal_name": "パブリック IP",
+      "portal_names": {
+        "概要": "パブリック IP"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "name": {
+      "name": "name",
+      "portal_name": "リソース名",
+      "portal_names": {
+        "ページヘッダー / 概要": "リソース名"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "location": {
+      "name": "location",
+      "portal_name": "場所",
+      "portal_names": {
+        "ページヘッダー / 概要": "場所"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "privateipaddress": {
+      "name": "properties.ipConfigurations[*].privateIPAddress",
+      "portal_name": "プライベート IP",
+      "portal_names": {
+        "概要": "プライベート IP"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "privateipallocationmethod": {
+      "name": "properties.ipConfigurations[*].privateIPAllocationMethod",
+      "portal_name": "プライベート IP 割り当て方法",
+      "portal_names": {
+        "概要": "プライベート IP 割り当て方法"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "id": {
+      "name": "id",
+      "portal_name": "リソース ID",
+      "portal_names": {
+        "設定 / プロパティ / 概要": "リソース ID"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    }
+  },
+  "firewallpolicy": {
+    "sku.tier": {
+      "name": "properties.sku.tier",
+      "portal_name": "ポリシー レベル",
+      "portal_names": {
+        "概要": "ポリシー レベル"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "threatintelmode": {
+      "name": "properties.threatIntelMode",
+      "portal_name": "脅威インテリジェンス モード",
+      "portal_names": {
+        "設定 / Threat Intelligence": "脅威インテリジェンス モード"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "警告のみ": "Alert",
+        "拒否": "Deny",
+        "無効": "Off"
+      }
+    },
+    "enableproxy": {
+      "name": "properties.dnsSettings.enableProxy",
+      "portal_name": "DNS プロキシ",
+      "portal_names": {
+        "設定 / DNS": "DNS プロキシ"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true",
+        "無効": "false"
+      }
+    },
+    "servers": {
+      "name": "properties.dnsSettings.servers",
+      "portal_name": "カスタム DNS サーバー",
+      "portal_names": {
+        "設定 / DNS": "カスタム DNS サーバー"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "priority": {
+      "name": "ruleCollectionGroups[*].properties.ruleCollections[*].priority",
+      "portal_name": "Rule Collection Priority",
+      "portal_names": {
+        "規則 / ネットワーク規則": "Rule Collection Priority",
+        "規則 / アプリケーション規則": "Rule Collection Priority",
+        "規則 / DNAT 規則": "Rule Collection Priority"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "rulecollections.name": {
+      "name": "ruleCollectionGroups[*].properties.ruleCollections[*].name",
+      "portal_name": "Rule collection name",
+      "portal_names": {
+        "規則 / ネットワーク規則": "Rule collection name",
+        "規則 / アプリケーション規則": "Rule collection name",
+        "規則 / DNAT 規則": "Rule collection name"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "rules.name": {
+      "name": "ruleCollectionGroups[*].properties.ruleCollections[*].rules[*].name",
+      "portal_name": "Rule name",
+      "portal_names": {
+        "規則 / ネットワーク規則": "Rule name",
+        "規則 / アプリケーション規則": "Rule name",
+        "規則 / DNAT 規則": "Rule name"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "sourceaddresses": {
+      "name": "ruleCollectionGroups[*].properties.ruleCollections[*].rules[*].sourceAddresses",
+      "portal_name": "Source",
+      "portal_names": {
+        "規則 / ネットワーク規則": "Source",
+        "規則 / アプリケーション規則": "Source",
+        "規則 / DNAT 規則": "Source"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "destinationports": {
+      "name": "ruleCollectionGroups[*].properties.ruleCollections[*].rules[*].destinationPorts",
+      "portal_name": "Port",
+      "portal_names": {
+        "規則 / ネットワーク規則": "Port",
+        "規則 / アプリケーション規則": "Port",
+        "規則 / DNAT 規則": "Port"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "destinationaddresses": {
+      "name": "ruleCollectionGroups[*].properties.ruleCollections[*].rules[*].destinationAddresses",
+      "portal_name": "Destination",
+      "portal_names": {
+        "規則 / ネットワーク規則": "Destination",
+        "規則 / アプリケーション規則": "Destination",
+        "規則 / DNAT 規則": "Destination"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "ipprotocols": {
+      "name": "ruleCollectionGroups[*].properties.ruleCollections[*].rules[*].ipProtocols",
+      "portal_name": "Protocol",
+      "portal_names": {
+        "規則 / ネットワーク規則": "Protocol"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "action.type": {
+      "name": "ruleCollectionGroups[*].properties.ruleCollections[*].action.type",
+      "portal_name": "Action",
+      "portal_names": {
+        "規則 / ネットワーク規則": "Action"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "name": {
+      "name": "name",
+      "portal_name": "リソース名",
+      "portal_names": {
+        "ページヘッダー / 概要": "リソース名"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "location": {
+      "name": "location",
+      "portal_name": "場所",
+      "portal_names": {
+        "ページヘッダー / 概要": "場所"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "id": {
+      "name": "id",
+      "portal_name": "リソース ID",
+      "portal_names": {
+        "設定 / プロパティ / 概要": "リソース ID"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    }
+  },
+  "wafpolicy": {
+    "policysettings.state": {
+      "name": "policySettings.state",
+      "portal_name": "Azure Policy の状態",
+      "portal_names": {
+        "概要": "Azure Policy の状態"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "Enabled"
+      }
+    },
+    "mode": {
+      "name": "policySettings.mode",
+      "portal_name": "ポリシー モード",
+      "portal_names": {
+        "概要": "ポリシー モード"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "防止": "Prevention",
+        "検出": "Detection"
+      }
+    },
+    "rulesettype": {
+      "name": "managedRules.managedRuleSets[*].ruleSetType",
+      "portal_name": "ルール セットの種類",
+      "portal_names": {
+        "設定 / 管理されているルール": "ルール セットの種類"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "rulesetversion": {
+      "name": "managedRules.managedRuleSets[*].ruleSetVersion",
+      "portal_name": "バージョン",
+      "portal_names": {
+        "設定 / 管理されているルール": "バージョン"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "requestbodycheck": {
+      "name": "policySettings.requestBodyCheck",
+      "portal_name": "要求本文の検査を適用する",
+      "portal_names": {
+        "概要": "要求本文の検査",
+        "設定 / ポリシー設定": "要求本文の検査を適用する"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true"
+      }
+    },
+    "maxrequestbodysizeinkb": {
+      "name": "policySettings.maxRequestBodySizeInKb",
+      "portal_name": "要求本文の最大サイズ (KB)",
+      "portal_names": {
+        "概要": "最大要求本文サイズ (KB)",
+        "設定 / ポリシー設定": "要求本文の最大サイズ (KB)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "fileuploadlimitinmb": {
+      "name": "policySettings.fileUploadLimitInMb",
+      "portal_name": "ファイル アップロードの最大サイズ (MB)",
+      "portal_names": {
+        "概要": "ファイル アップロード制限 (MB)",
+        "設定 / ポリシー設定": "ファイル アップロードの最大サイズ (MB)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "name": {
+      "name": "name",
+      "portal_name": "リソース名",
+      "portal_names": {
+        "ページヘッダー / 概要": "リソース名"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "location": {
+      "name": "location",
+      "portal_name": "場所",
+      "portal_names": {
+        "ページヘッダー / 概要": "場所"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "requestbodyinspectlimitinkb": {
+      "name": "policySettings.requestBodyInspectLimitInKB",
+      "portal_name": "要求本文検査の上限 (KB)",
+      "portal_names": {
+        "設定 / ポリシー設定": "要求本文検査の上限 (KB)"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    },
+    "requestbodyenforcement": {
+      "name": "policySettings.requestBodyEnforcement",
+      "portal_name": "要求本文の上限を適用する",
+      "portal_names": {
+        "設定 / ポリシー設定": "要求本文の上限を適用する"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true"
+      }
+    },
+    "fileuploadenforcement": {
+      "name": "policySettings.fileUploadEnforcement",
+      "portal_name": "ファイル アップロードの上限を適用する",
+      "portal_names": {
+        "設定 / ポリシー設定": "ファイル アップロードの上限を適用する"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true,
+      "value_map": {
+        "有効": "true"
+      }
+    },
+    "id": {
+      "name": "id",
+      "portal_name": "リソース ID",
+      "portal_names": {
+        "設定 / プロパティ / 概要": "リソース ID"
+      },
+      "description": "",
+      "type_info": "",
+      "confirmed": true
+    }
+  }
+}

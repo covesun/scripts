@@ -1,0 +1,24 @@
+# 生成ファイル
+*.csv
+*.xlsx
+*.zip
+
+# スクリーンショット（ユーザー固有・大容量）
+screenshots/
+
+# 実環境 ARM JSON（個人情報含む可能性）
+arm_samples/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS
+.DS_Store
+
+# ログ
+*.log
+
+# Azureポータル認証情報（絶対に公開しないこと）
+.portal_auth.json

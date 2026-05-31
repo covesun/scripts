@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vnetName": {
+      "type": "string",
+      "defaultValue": "vnet-mapping"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "japaneast"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2023-09-01",
+      "name": "[parameters('vnetName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": ["10.13.0.0/16"]
+        },
+        "dhcpOptions": {
+          "dnsServers": ["203.0.113.53", "203.0.113.54"]
+        },
+        "enableDdosProtection": false,
+        "subnets": [
+          {
+            "name": "snet-frontend",
+            "properties": {
+              "addressPrefix": "10.13.1.0/24",
+              "serviceEndpoints": [
+                { "service": "Microsoft.Storage" }
+              ]
+            }
+          },
+          {
+            "name": "snet-backend",
+            "properties": {
+              "addressPrefix": "10.13.2.0/24"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": { "type": "string", "defaultValue": "japaneast" }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Network/firewallPolicies",
+      "apiVersion": "2023-09-01",
+      "name": "fwpol-mapping",
+      "location": "[parameters('location')]",
+      "properties": {
+        "sku": { "tier": "Standard" },
+        "threatIntelMode": "Alert",
+        "dnsSettings": {
+          "enableProxy": true,
+          "servers": ["203.0.113.53"]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/firewallPolicies/ruleCollectionGroups",
+      "apiVersion": "2023-09-01",
+      "name": "fwpol-mapping/DefaultNetworkRuleCollectionGroup",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/firewallPolicies', 'fwpol-mapping')]"
+      ],
+      "properties": {
+        "priority": 200,
+        "ruleCollections": [
+          {
+            "ruleCollectionType": "FirewallPolicyFilterRuleCollection",
+            "name": "net-rule-collection-mapping",
+            "priority": 1300,
+            "action": { "type": "Allow" },
+            "rules": [
+              {
+                "ruleType": "NetworkRule",
+                "name": "allow-dns-mapping",
+                "ipProtocols": ["UDP"],
+                "sourceAddresses": ["10.13.0.0/16"],
+                "destinationAddresses": ["203.0.113.53"],
+                "destinationPorts": ["5353"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+      "apiVersion": "2023-09-01",
+      "name": "waf-policy-mapping",
+      "location": "[parameters('location')]",
+      "properties": {
+        "policySettings": {
+          "state": "Enabled",
+          "mode": "Prevention",
+          "requestBodyCheck": true,
+          "maxRequestBodySizeInKb": 128,
+          "fileUploadLimitInMb": 100
+        },
+        "managedRules": {
+          "managedRuleSets": [{
+            "ruleSetType": "OWASP",
+            "ruleSetVersion": "3.2",
+            "ruleGroupOverrides": []
+          }],
+          "exclusions": []
+        },
+        "customRules": []
+      }
+    }
+  ]
+}

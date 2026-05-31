@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "kvName": {
+      "type": "string",
+      "defaultValue": "kv-mapping-test-01"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "japaneast"
+    },
+    "tenantId": {
+      "type": "string",
+      "defaultValue": "[subscription().tenantId]"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2023-07-01",
+      "name": "[parameters('kvName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "sku": {
+          "family": "A",
+          "name": "premium"
+        },
+        "tenantId": "[parameters('tenantId')]",
+        "enableSoftDelete": true,
+        "softDeleteRetentionInDays": 13,
+        "enablePurgeProtection": null,
+        "enableRbacAuthorization": true,
+        "publicNetworkAccess": "Enabled",
+        "networkAcls": {
+          "defaultAction": "Deny",
+          "bypass": "AzureServices",
+          "ipRules": [
+            { "value": "203.0.113.1/32" }
+          ],
+          "virtualNetworkRules": []
+        }
+      }
+    }
+  ]
+}
